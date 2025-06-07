@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup-styles.css">
+    <title>ZCoder - Sign Up</title>
+</head>
+<body>
+    <div class="imgcontainer">
+        <img src="zcoder-logo.png" alt="ZCoder Logo" class="logo">
+    </div>
+    
+    <div class="signup-container">
+        <div class="signup-header">
+            <h1>Create Account</h1>
+            <p>Join ZCoder community today</p>
+        </div>
+        
+        <div class="signup-form">
+            <div class="success-message" id="success-message">
+                Account created successfully!
+            </div>
+
+            <form id="signup-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <div class="error-message" id="firstName-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <div class="error-message" id="lastName-error"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <div class="error-message" id="username-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strength-fill"></div>
+                        </div>
+                        <span id="strength-text">Password strength</span>
+                    </div>
+                    <div class="error-message" id="password-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div class="error-message" id="confirmPassword-error"></div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">
+                        I agree to the <a href="#" onclick="showTerms()">Terms of Service</a> 
+                        and <a href="#" onclick="showPrivacy()">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">
+                        I want to receive updates about new features and coding tips
+                    </label>
+                </div>
+
+                <button type="submit" class="signup-button" id="signup-btn">Create Account</button>
+            </form>
+                
+            <div class="divider">
+                <span>or sign up with</span>
+            </div>
+                
+            <div class="social-login">
+                <button class="social-button facebook" id="facebook-signup">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Continue with Facebook
+                </button>
+                
+                <button class="social-button google" id="google-signup">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+            </div>
+                
+            <div class="login-link">
+                Already have an account? <a href="login.html" id="login-link">Sign in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form validation and password strength
+        const form = document.getElementById('signup-form');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const strengthFill = document.getElementById('strength-fill');
+        const strengthText = document.getElementById('strength-text');
+        const signupBtn = document.getElementById('signup-btn');
+
+        // Password strength checker
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            let feedback = '';
+
+            if (password.length >= 8) strength += 1;
+            if (password.match(/[a-z]/)) strength += 1;
+            if (password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/[0-9]/)) strength += 1;
+            if (password.match(/[^A-Za-z0-9]/)) strength += 1;
+
+            switch (strength) {
+                case 0:
+                case 1:
+                    feedback = 'Very weak';
+                    strengthFill.className = 'strength-fill strength-weak';
+                    break;
+                case 2:
+                    feedback = 'Weak';
+                    strengthFill.className = 'strength-fill strength-weak';
+                    break;
+                case 3:
+                    feedback = 'Fair';
+                    strengthFill.className = 'strength-fill strength-fair';
+                    break;
+                case 4:
+                    feedback = 'Good';
+                    strengthFill.className = 'strength-fill strength-good';
+                    break;
+                case 5:
+                    feedback = 'Strong';
+                    strengthFill.className = 'strength-fill strength-strong';
+                    break;
+            }
+
+            strengthText.textContent = feedback;
+            return strength;
+        }
+
+        passwordInput.addEventListener('input', function() {
+            checkPasswordStrength(this.value);
+        });
+
+        // Real-time validation
+        function validateField(field, errorId, validationFn) {
+            const errorElement = document.getElementById(errorId);
+            const isValid = validationFn(field.value);
+            
+            if (!isValid.valid) {
+                errorElement.textContent = isValid.message;
+                errorElement.style.display = 'block';
+                field.style.borderColor = '#ff4757';
+            } else {
+                errorElement.style.display = 'none';
+                field.style.borderColor = '#e1e1e1';
+            }
+            
+            return isValid.valid;
+        }
+
+        // Validation functions
+        const validators = {
+            firstName: (value) => ({
+                valid: value.length >= 2,
+                message: 'First name must be at least 2 characters'
+            }),
+            lastName: (value) => ({
+                valid: value.length >= 2,
+                message: 'Last name must be at least 2 characters'
+            }),
+            username: (value) => ({
+                valid: /^[a-zA-Z0-9_]{3,20}$/.test(value),
+                message: 'Username must be 3-20 characters (letters, numbers, underscore only)'
+            }),
+            email: (value) => ({
+                valid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+                message: 'Please enter a valid email address'
+            }),
+            password: (value) => ({
+                valid: value.length >= 8,
+                message: 'Password must be at least 8 characters long'
+            }),
+            confirmPassword: (value) => ({
+                valid: value === passwordInput.value,
+                message: 'Passwords do not match'
+            })
+        };
+
+        // Add blur event listeners for real-time validation
+        Object.keys(validators).forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            if (field) {
+                field.addEventListener('blur', () => {
+                    validateField(field, fieldName + '-error', validators[fieldName]);
+                });
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate all fields
+            Object.keys(validators).forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (field) {
+                    const fieldValid = validateField(field, fieldName + '-error', validators[fieldName]);
+                    isValid = isValid && fieldValid;
+                }
+            });
+
+            // Check terms agreement
+            const termsCheckbox = document.getElementById('terms');
+            if (!termsCheckbox.checked) {
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate signup process
+                signupBtn.textContent = 'Creating Account...';
+                signupBtn.disabled = true;
+                
+                setTimeout(() => {
+                    document.getElementById('success-message').style.display = 'block';
+                    form.style.display = 'none';
+                    
+                    setTimeout(() => {
+                        alert('Account created successfully! Redirecting to login...');
+                        // Here you would redirect to login page
+                    }, 2000);
+                }, 1500);
+
+                console.log('Signup data:', {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    username: document.getElementById('username').value,
+                    email: document.getElementById('email').value,
+                    newsletter: document.getElementById('newsletter').checked
+                });
+            }
+        });
+
+        // Social signup handlers
+        document.getElementById('facebook-signup').addEventListener('click', function() {
+            console.log('Facebook signup clicked');
+            alert('Facebook signup would be initiated here');
+        });
+
+        document.getElementById('google-signup').addEventListener('click', function() {
+            console.log('Google signup clicked');
+            alert('Google signup would be initiated here');
+        });
+
+        document.getElementById('login-link').addEventListener('click', function(e) {
+            // Remove preventDefault to allow normal navigation
+            console.log('Navigating to login page');
+        });
+
+        // Focus effects
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+
+        // Modal functions for terms and privacy
+        function showTerms() {
+            alert('Terms of Service would be displayed in a modal here');
+        }
+
+        function showPrivacy() {
+            alert('Privacy Policy would be displayed in a modal here');
+        }
+    </script>
+</body>
+</html>

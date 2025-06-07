@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZCoder - Coding Room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="coding-styles.css">
+</head>
+<body>
+    <div class="coding-container">
+        <header class="top-bar">
+            <div class="room-info">
+                Room: <span id="room-name">Loading...</span> | 
+                User: <span id="user-name">You</span> |
+                👥 Members: <span id="member-count">1</span>
+            </div>
+            <button class="logout-btn" onclick="exitRoom()">Exit</button>
+        </header>
+
+        <main class="main-section">
+            <section class="editor-section">
+                <textarea id="code-editor" placeholder="// Start coding here..."></textarea>
+            </section>
+
+            <section class="chat-section">
+                <div class="chat-header">💬 Chat</div>
+                <div id="chat-box" class="chat-box"></div>
+                <form id="chat-form">
+                    <input type="text" id="chat-input" placeholder="Type a message..." required>
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Populate room/user info from URL
+        const params = new URLSearchParams(window.location.search);
+        const username = params.get("username") || "User";
+        const roomName = params.get("roomName") || "Unnamed Room";
+        document.getElementById("user-name").textContent = username;
+        document.getElementById("room-name").textContent = roomName;
+
+        // Chat logic (simplified)
+        const chatForm = document.getElementById("chat-form");
+        const chatBox = document.getElementById("chat-box");
+        const chatInput = document.getElementById("chat-input");
+
+        chatForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const message = chatInput.value.trim();
+            if (message) {
+                const msgElem = document.createElement("div");
+                msgElem.className = "chat-message";
+                msgElem.innerHTML = `<strong>${username}:</strong> ${message}`;
+                chatBox.appendChild(msgElem);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                chatInput.value = "";
+            }
+        });
+
+        function exitRoom() {
+            if (confirm("Leave this coding room?")) {
+                window.location.href = "room.html";
+            }
+        }
+    </script>
+</body>
+</html>
