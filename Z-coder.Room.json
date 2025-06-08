@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "666001ab3ef4c56a47a7b001"
+  },
+  "name": "Graph Theory Lounge",
+  "description": "A public room to discuss graph algorithms like Dijkstra, Prim, and Kruskal.",
+  "createdBy": {
+    "$oid": "665fae99f4e8a06d94c8b123"
+  },
+  "members": [
+    {
+      "$oid": "665fae99f4e8a06d94c8b123"
+    },
+    {
+      "$oid": "665fae99f4e8a06d94c8b456"
+    },
+    {
+      "$oid": "665fae99f4e8a06d94c8b789"
+    }
+  ],
+  "messages": [
+    {
+      "user": {
+        "$oid": "665fae99f4e8a06d94c8b123"
+      },
+      "username": "jitucoder",
+      "text": "Hey, can someone explain Dijkstra’s edge relaxation step?",
+      "createdAt": {
+        "$date": "2025-06-05T16:47:00.000Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "665fae99f4e8a06d94c8b456"
+      },
+      "username": "alice007",
+      "text": "Sure! It just means updating shortest distances if you find a better path.",
+      "createdAt": {
+        "$date": "2025-06-05T16:48:15.000Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-05T16:45:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-05T16:45:00.000Z"
+  }
+}]

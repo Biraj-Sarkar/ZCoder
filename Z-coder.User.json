@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "665a1127f8a3e2c12e1a8f45"
+  },
+  "username": "jitu123",
+  "email": "jitu@example.com",
+  "passwordHash": "$2b$10$examplehashstring",
+  "createdAt": {
+    "$date": "2025-06-01T10:35:45.000Z"
+  },
+  "lastLogin": {
+    "$date": "2025-06-01T14:20:00.000Z"
+  },
+  "profilePicture": "https://via.placeholder.com/150",
+  "solvedProblems": [
+    {
+      "$oid": "665b90fe91d8a0e8ad7f1123"
+    },
+    {
+      "$oid": "665b90fe91d8a0e8ad7f1124"
+    }
+  ],
+  "submissions": [
+    {
+      "$oid": "665b91ab8f69e1fce9a0d22a"
+    }
+  ],
+  "role": "user",
+  "bio": {
+    "description": "Aspiring software developer",
+    "location": "India"
+  },
+  "country": "India",
+  "bookmarkedProblems": [
+    {
+      "$oid": "665b90fe91d8a0e8ad7f1123"
+    },
+    {
+      "$oid": "665b90fe91d8a0e8ad7f1127"
+    }
+  ]
+}]

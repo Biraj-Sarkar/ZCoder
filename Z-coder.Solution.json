@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "665fce8e2c8b5b5d2e6f0001"
+  },
+  "userId": {
+    "$oid": "665fae99f4e8a06d94c8b123"
+  },
+  "problemId": {
+    "$oid": "665fae99f4e8a06d94c8c001"
+  },
+  "code": "def two_sum(nums, target):\n  for i in range(len(nums)):\n    for j in range(i+1, len(nums)):\n      if nums[i] + nums[j] == target:\n        return i, j\nn = int(input())\nnums = list(map(int, input().split()))\ntarget = int(input())\nres = two_sum(nums, target)\nprint(res[0], res[1])",
+  "language": "Python",
+  "status": "Accepted",
+  "submittedAt": {
+    "$date": "2025-06-05T15:02:30.000Z"
+  },
+  "testResults": [
+    {
+      "input": "4\n2 7 11 15\n9",
+      "expectedOutput": "0 1",
+      "userOutput": "0 1",
+      "passed": true
+    },
+    {
+      "input": "3\n3 2 4\n6",
+      "expectedOutput": "1 2",
+      "userOutput": "1 2",
+      "passed": true
+    }
+  ],
+  "comments": [
+    {
+      "user": {
+        "$oid": "665fae99f4e8a06d94c8b123"
+      },
+      "text": "Great solution! Very readable.",
+      "createdAt": {
+        "$date": "2025-06-06T10:30:00.000Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "665fae99f4e8a06d94c8b124"
+      },
+      "text": "Can this be optimized further?",
+      "createdAt": {
+        "$date": "2025-06-06T11:15:00.000Z"
+      }
+    }
+  ]
+}]

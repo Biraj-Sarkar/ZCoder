@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "665fae99f4e8a06d94c8c001"
+  },
+  "title": "Two Sum",
+  "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+  "inputFormat": "The first line contains an integer n — the size of the array. The second line contains n integers — the array elements. The third line contains an integer target.",
+  "outputFormat": "Print two integers — the indices of the elements that sum up to the target.",
+  "sampleInputs": [
+    {
+      "input": "4\n2 7 11 15\n9",
+      "output": "0 1"
+    },
+    {
+      "input": "3\n3 2 4\n6",
+      "output": "1 2"
+    }
+  ],
+  "difficulty": "Easy",
+  "createdBy": {
+    "$oid": "665fae99f4e8a06d94c8b999"
+  },
+  "createdAt": {
+    "$date": "2025-06-05T13:32:00.000Z"
+  },
+  "timeLimit": 2000,
+  "memoryLimit": 256,
+  "testCases": [
+    {
+      "input": "5\n1 2 3 4 5\n8",
+      "expectedOutput": "2 4"
+    },
+    {
+      "input": "3\n1 3 4\n7",
+      "expectedOutput": "1 2"
+    }
+  ],
+  "topicTags": [
+    "array",
+    "hashmap"
+  ]
+}]
