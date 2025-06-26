@@ -1,0 +1,355 @@
+.coding-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.coding-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.users-count {
+  font-size: 16px;
+  color: #555;
+  margin-top: 4px;
+}
+
+.language-selector {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.language-selector select {
+  margin-left: 8px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.language-selector select:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.coding-logout-btn {
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px 12px;
+  transition: color 0.3s ease;
+}
+
+.coding-logout-btn:hover {
+  color: darkred;
+}
+
+.coding-editor-chat {
+  display: flex;
+  flex: 1;
+  margin: 10px;
+  width: 100%;
+  max-width: 1200px;
+  height: calc(100vh - 90px);
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.coding-editor-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.monaco-editor {
+  flex-grow: 1;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 720px !important;
+}
+
+.coding-btn {
+  margin-top: 10px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+}
+
+.coding-btn:hover {
+  background-color: #0056b3;
+}
+
+.coding-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.input-output-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-section,
+.output-section {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.input-section h3,
+.output-section h3 {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.input-textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.input-textarea:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+  border-color: #007bff;
+}
+
+.output-text {
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  min-height: 100px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.output-text.error {
+  background: #ffe6e6;
+  color: #d32f2f;
+  border-color: #f5c6c6;
+}
+
+.output-text:empty::before {
+  content: "No output yet...";
+  color: #999;
+  font-style: italic;
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.chat-header {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 6px 6px 0 0;
+  user-select: none;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  padding: 12px 16px;
+  overflow-y: auto;
+  background-color: white;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  max-height: calc(100% - 120px);
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.chat-message strong {
+  color: #007bff;
+}
+
+.typing-indicator {
+  font-style: italic;
+  color: #666;
+  margin: 6px 16px;
+  min-height: 20px;
+  font-size: 13px;
+}
+
+.typing-text {
+  color: #007bff;
+}
+
+.chat-input-container {
+  display: flex;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  border-radius: 0 0 6px 6px;
+  gap: 10px;
+}
+
+.chat-input {
+  flex-grow: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline-offset: 2px;
+  outline-color: transparent;
+  transition: outline-color 0.2s ease;
+}
+
+.chat-input:focus {
+  outline-color: #007bff;
+  background-color: white;
+  border-color: #007bff;
+}
+
+.chat-send-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.chat-send-btn:hover {
+  background-color: #0056b3;
+}
+
+.coding-back-btn {
+  background: transparent;
+  border: 1px solid #d6c964dc;
+  color: #d6c964dc;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.coding-back-btn:hover {
+  background-color: #d6c964dc;
+  color: white;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-top: 12px;
+  font-weight: 600;
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  background: #ffebee;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #f5c6c6;
+}
+
+.error-message.fade-out {
+  opacity: 0;
+}
+
+@media (max-width: 1024px) {
+  .coding-editor-chat {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .coding-editor-container,
+  .chat-container {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .coding-editor-container {
+    margin-bottom: 20px;
+  }
+
+  .monaco-editor {
+    height: 400px !important;
+  }
+
+  .chat-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coding-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .coding-back-btn {
+    align-self: flex-end;
+  }
+
+  .input-output-container {
+    margin-top: 10px;
+  }
+
+  .input-textarea {
+    height: 100px;
+  }
+
+  .output-text {
+    max-height: 150px;
+    min-height: 80px;
+  }
+}
